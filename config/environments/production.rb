@@ -88,6 +88,6 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  config.credentials.content_path = '/data/storage/credentials/production.yml.enc'
-  config.credentials.key_path = '/data/storage/credentials/production.key'
+  config.credentials.content_path = "/data/storage/credentials/production.yml.enc"
+  config.credentials.key_path = "/data/storage/credentials/production.key"
 end
