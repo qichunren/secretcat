@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
+
   def create
-    @user = User.new(email: params[:email])
-    key = @user.set_master_password(params[:master_password])
+    @user = User.new(email: params[:user][:email])
+    key = @user.set_master_password(params[:user][:master_password])
 
     if @user.save
       session[:user_id] = @user.id
-      session[:key] = Base64.encode64(key) # 临时存储密钥（生产环境中需更安全）
-      render json: { message: 'User created successfully' }, status: :created
+      session[:key] = Base64.encode64(key)
+      redirect_to password_entries_path, notice: '账号创建成功'
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

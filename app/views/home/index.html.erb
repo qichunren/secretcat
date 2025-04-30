@@ -1,0 +1,59 @@
+<div class="relative isolate overflow-hidden">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        安全地管理您的密码
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-gray-600">
+        SecretCat 是一个安全的密码管理器，使用先进的加密技术保护您的密码安全。所有数据都经过加密存储，只有您能访问。
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <% if current_user %>
+          <%= link_to "管理密码", password_entries_path, class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        <% else %>
+          <%= link_to "开始使用", signup_path, class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+          <%= link_to "了解更多", "#features", class: "text-sm font-semibold leading-6 text-gray-900" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="features" class="bg-white py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:text-center">
+      <h2 class="text-base font-semibold leading-7 text-indigo-600">安全特性</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        为什么选择 SecretCat？
+      </p>
+    </div>
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+        <div class="flex flex-col">
+          <dt class="font-semibold leading-7 text-gray-900">
+            强大的加密技术
+          </dt>
+          <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+            <p>使用业界标准的加密算法，确保您的密码安全存储。主密码永远不会以明文形式存储。</p>
+          </dd>
+        </div>
+        <div class="flex flex-col">
+          <dt class="font-semibold leading-7 text-gray-900">
+            简单易用
+          </dt>
+          <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+            <p>直观的用户界面，让密码管理变得轻松简单。快速存储和检索您的密码。</p>
+          </dd>
+        </div>
+        <div class="flex flex-col">
+          <dt class="font-semibold leading-7 text-gray-900">
+            安全可靠
+          </dt>
+          <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+            <p>所有数据都经过加密存储，只有您知道主密码，确保数据的私密性和安全性。</p>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>

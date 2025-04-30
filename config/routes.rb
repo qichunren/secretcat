@@ -1,9 +1,27 @@
 Rails.application.routes.draw do
+  get "sessions/new"
+  get "sessions/create"
+  get "sessions/destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # API routes
-  post '/users', to: 'users#create'
-  resources :password_entries, only: [:create, :show]
+  # Authentication routes
+  get 'signup', to: 'users#new'
+  post 'users', to: 'users#create'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
+  # Password entries routes with friendly URLs
+  resources :password_entries, path: 'passwords'
+
+  # API routes (for potential future use)
+  scope :api do
+    post '/users', to: 'users#create'
+    resources :password_entries, only: [:create, :show]
+  end
+
+  # Set root page
+  root 'home#index'
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
