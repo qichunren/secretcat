@@ -10,13 +10,13 @@ class SessionsController < ApplicationController
         user.salt,
         100_000,
         32,
-        'sha256'
+        "sha256"
       )
       session[:user_id] = user.id
       session[:key] = Base64.encode64(key)
-      redirect_to password_entries_path, notice: '登录成功'
+      redirect_to password_entries_path, notice: "登录成功"
     else
-      flash.now[:alert] = '邮箱或密码错误'
+      flash.now[:alert] = "邮箱或密码错误"
       render :new, status: :unprocessable_entity
     end
   end
@@ -24,6 +24,6 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     session.delete(:key)
-    redirect_to root_path, notice: '已安全退出'
+    redirect_to root_path, notice: "已安全退出"
   end
 end

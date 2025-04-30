@@ -64,12 +64,12 @@ class PasswordEntryTest < ActiveSupport::TestCase
 
   test "should handle complex data types in encryption" do
     complex_data = {
-      "urls" => ["https://example1.com", "https://example2.com"],
+      "urls" => [ "https://example1.com", "https://example2.com" ],
       "credentials" => {
         "primary" => { "username" => "user1", "password" => "pass1" },
         "secondary" => { "username" => "user2", "password" => "pass2" }
       },
-      "tags" => ["work", "personal"],
+      "tags" => [ "work", "personal" ],
       "last_used" => Time.current.to_s,
       "access_count" => 42
     }

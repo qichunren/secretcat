@@ -13,6 +13,6 @@ class PasswordEntry < ApplicationRecord
     encryptor = ActiveSupport::MessageEncryptor.new(key)
     JSON.parse(encryptor.decrypt_and_verify(encrypted_data))
   rescue ActiveSupport::MessageEncryptor::InvalidMessage
-    raise 'Invalid key or corrupted data'
+    raise "Invalid key or corrupted data"
   end
 end

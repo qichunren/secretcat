@@ -1,6 +1,6 @@
 class PasswordEntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_password_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_password_entry, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @password_entries = current_user.password_entries
@@ -23,7 +23,7 @@ class PasswordEntriesController < ApplicationController
     @password_entry.encrypted_data = PasswordEntry.encrypt_data(data, current_key)
 
     if @password_entry.save
-      redirect_to password_entries_path, notice: '密码已成功保存'
+      redirect_to password_entries_path, notice: "密码已成功保存"
     else
       render :new, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class PasswordEntriesController < ApplicationController
     @password_entry.encrypted_data = PasswordEntry.encrypt_data(data, current_key)
 
     if @password_entry.save
-      redirect_to password_entries_path, notice: '密码已成功更新'
+      redirect_to password_entries_path, notice: "密码已成功更新"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -50,7 +50,7 @@ class PasswordEntriesController < ApplicationController
 
   def destroy
     @password_entry.destroy
-    redirect_to password_entries_path, notice: '密码已成功删除'
+    redirect_to password_entries_path, notice: "密码已成功删除"
   end
 
   private
@@ -58,7 +58,7 @@ class PasswordEntriesController < ApplicationController
   def set_password_entry
     @password_entry = current_user.password_entries.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to password_entries_path, alert: '未找到该密码条目'
+    redirect_to password_entries_path, alert: "未找到该密码条目"
   end
 
   def current_key

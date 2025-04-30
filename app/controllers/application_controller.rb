@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
-      redirect_to login_path, alert: '请先登录'
+      redirect_to login_path, alert: "请先登录"
     end
   end
 end

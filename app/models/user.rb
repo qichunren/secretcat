@@ -1,5 +1,5 @@
-require 'openssl'
-require 'base64'
+require "openssl"
+require "base64"
 
 class User < ApplicationRecord
   has_many :password_entries, dependent: :destroy
@@ -19,11 +19,11 @@ class User < ApplicationRecord
       salt,
       100_000, # 迭代次数，增加计算成本
       32,      # 密钥长度（256 位）
-      'sha256' # 哈希算法
+      "sha256" # 哈希算法
     )
 
     # 存储主密码的哈希（用于验证）
-    self.password_hash = Base64.encode64(OpenSSL::HMAC.digest('sha256', key, master_password))
+    self.password_hash = Base64.encode64(OpenSSL::HMAC.digest("sha256", key, master_password))
 
     # 返回派生密钥（用于加密）
     key
@@ -36,8 +36,8 @@ class User < ApplicationRecord
       salt,
       100_000,
       32,
-      'sha256'
+      "sha256"
     )
-    Base64.encode64(OpenSSL::HMAC.digest('sha256', key, master_password)) == password_hash
+    Base64.encode64(OpenSSL::HMAC.digest("sha256", key, master_password)) == password_hash
   end
 end
