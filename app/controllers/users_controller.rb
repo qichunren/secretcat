@@ -10,8 +10,9 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       session[:key] = Base64.encode64(key)
-      redirect_to password_entries_path, notice: "账号创建成功"
+      redirect_to password_entries_path, notice: "账号创建成功", status: :see_other
     else
+      flash[:alert] = "账号创建失败，请检查输入信息"
       render :new, status: :unprocessable_entity
     end
   end
