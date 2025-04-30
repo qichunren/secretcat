@@ -1,45 +1,186 @@
-<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-xl">
+<%# 新建密码页面 %>
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-slate-900">
+  <div class="sm:mx-auto sm:w-full sm:max-w-2xl">
     <div class="text-center">
-      <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">添加新密码</h1>
-      <p class="mt-2 text-lg leading-8 text-gray-600">安全地存储您的密码信息。</p>
+      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-white">添加新密码</h2>
+      <p class="mt-2 text-sm text-gray-300">
+        将您的密码安全地存储在 SecretCat 中
+      </p>
     </div>
-
-    <%= form_with(model: @password_entry, class: "mt-8") do |f| %>
-      <div class="space-y-6">
-        <div>
-          <%= f.label :name, "名称", class: "block text-sm font-medium leading-6 text-gray-900" %>
-          <div class="mt-2">
-            <%= f.text_field :name, required: true, placeholder: "例如：GitHub", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.label :url, "网址", class: "block text-sm font-medium leading-6 text-gray-900" %>
-          <div class="mt-2">
-            <%= f.url_field :url, placeholder: "https://github.com", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.label :username, "用户名", class: "block text-sm font-medium leading-6 text-gray-900" %>
-          <div class="mt-2">
-            <%= f.text_field :username, required: true, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.label :password, "密码", class: "block text-sm font-medium leading-6 text-gray-900" %>
-          <div class="mt-2">
-            <%= f.password_field :password, required: true, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
-          </div>
-        </div>
-
-        <div class="mt-6 flex items-center justify-end gap-x-6">
-          <%= link_to "取消", password_entries_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
-          <%= f.submit "保存", class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-        </div>
-      </div>
-    <% end %>
   </div>
-</div> 
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+    <div class="bg-slate-800/50 backdrop-blur-sm px-6 py-8 shadow-xl rounded-xl sm:px-10 border border-white/10">
+      <%= form_with(model: @password_entry, class: "space-y-6") do |f| %>
+        <div>
+          <%= f.label :name, "名称", class: "block text-base font-medium leading-6 text-gray-200" %>
+          <div class="mt-2">
+            <%= f.text_field :name, required: true,
+                class: "block w-full rounded-lg border-0 px-4 py-3 bg-slate-700/50 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
+                placeholder: "例如：GitHub 账号" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :username, "用户名", class: "block text-base font-medium leading-6 text-gray-200" %>
+          <div class="mt-2">
+            <%= f.text_field :username,
+                class: "block w-full rounded-lg border-0 px-4 py-3 bg-slate-700/50 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
+                placeholder: "用户名或邮箱" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :password, "密码", class: "block text-base font-medium leading-6 text-gray-200" %>
+          <div class="mt-2 relative">
+            <%= f.text_field :password, required: true, type: "password",
+                class: "block w-full rounded-lg border-0 px-4 py-3 bg-slate-700/50 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base pr-24",
+                placeholder: "输入密码",
+                data: { password_target: "input" } %>
+            <button type="button" 
+                    class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-200"
+                    data-action="click->password#toggle">
+              <svg class="h-5 w-5" data-password-target="icon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between">
+            <%= f.label :generate_password, "生成强密码", class: "block text-base font-medium leading-6 text-gray-200" %>
+            <button type="button" 
+                    class="rounded-lg bg-indigo-500/20 px-3 py-2 text-sm font-semibold text-indigo-400 shadow-sm hover:bg-indigo-500/30"
+                    data-action="click->password#generate">
+              生成密码
+            </button>
+          </div>
+          <div class="mt-2">
+            <div class="space-y-3">
+              <div class="flex items-center gap-x-3">
+                <input type="range" min="12" max="32" value="16" class="w-full accent-indigo-500" data-password-target="length">
+                <span class="text-sm text-gray-300" data-password-target="lengthDisplay">16</span>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <label class="flex items-center gap-x-2">
+                  <input type="checkbox" checked class="h-4 w-4 rounded border-gray-700 bg-slate-700/50 text-indigo-500 focus:ring-indigo-500" data-password-target="uppercase">
+                  <span class="text-sm text-gray-300">大写字母</span>
+                </label>
+                <label class="flex items-center gap-x-2">
+                  <input type="checkbox" checked class="h-4 w-4 rounded border-gray-700 bg-slate-700/50 text-indigo-500 focus:ring-indigo-500" data-password-target="lowercase">
+                  <span class="text-sm text-gray-300">小写字母</span>
+                </label>
+                <label class="flex items-center gap-x-2">
+                  <input type="checkbox" checked class="h-4 w-4 rounded border-gray-700 bg-slate-700/50 text-indigo-500 focus:ring-indigo-500" data-password-target="numbers">
+                  <span class="text-sm text-gray-300">数字</span>
+                </label>
+                <label class="flex items-center gap-x-2">
+                  <input type="checkbox" checked class="h-4 w-4 rounded border-gray-700 bg-slate-700/50 text-indigo-500 focus:ring-indigo-500" data-password-target="symbols">
+                  <span class="text-sm text-gray-300">特殊符号</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :url, "网站地址", class: "block text-base font-medium leading-6 text-gray-200" %>
+          <div class="mt-2">
+            <%= f.url_field :url,
+                class: "block w-full rounded-lg border-0 px-4 py-3 bg-slate-700/50 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
+                placeholder: "https://example.com" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :notes, "备注", class: "block text-base font-medium leading-6 text-gray-200" %>
+          <div class="mt-2">
+            <%= f.text_area :notes,
+                class: "block w-full rounded-lg border-0 px-4 py-3 bg-slate-700/50 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
+                rows: 3,
+                placeholder: "添加额外的备注信息" %>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-x-6 pt-4">
+          <%= link_to "取消", password_entries_path, 
+              class: "text-base font-semibold leading-6 text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-slate-700/50" %>
+          <%= f.submit "保存密码", 
+              class: "flex justify-center rounded-xl bg-indigo-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transition-all duration-200 hover:scale-[1.02]" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%# 添加 Stimulus 控制器用于密码生成和显示切换 %>
+<%= javascript_tag do %>
+  const passwordController = {
+    initialize() {
+      this.visible = false;
+      this.updateVisibility();
+    },
+
+    toggle() {
+      this.visible = !this.visible;
+      this.updateVisibility();
+    },
+
+    updateVisibility() {
+      const input = document.querySelector('[data-password-target="input"]');
+      const icon = document.querySelector('[data-password-target="icon"]');
+      
+      if (this.visible) {
+        input.type = 'text';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+        `;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        `;
+      }
+    },
+
+    generate() {
+      const length = document.querySelector('[data-password-target="length"]').value;
+      const uppercase = document.querySelector('[data-password-target="uppercase"]').checked;
+      const lowercase = document.querySelector('[data-password-target="lowercase"]').checked;
+      const numbers = document.querySelector('[data-password-target="numbers"]').checked;
+      const symbols = document.querySelector('[data-password-target="symbols"]').checked;
+
+      let chars = '';
+      if (uppercase) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (lowercase) chars += 'abcdefghijklmnopqrstuvwxyz';
+      if (numbers) chars += '0123456789';
+      if (symbols) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+
+      document.querySelector('[data-password-target="input"]').value = password;
+    }
+  };
+
+  // 初始化控制器
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.querySelector('[data-action="click->password#toggle"]');
+    const generateButton = document.querySelector('[data-action="click->password#generate"]');
+    const lengthSlider = document.querySelector('[data-password-target="length"]');
+    const lengthDisplay = document.querySelector('[data-password-target="lengthDisplay"]');
+
+    passwordController.initialize();
+
+    toggleButton.addEventListener('click', () => passwordController.toggle());
+    generateButton.addEventListener('click', () => passwordController.generate());
+    lengthSlider.addEventListener('input', (e) => {
+      lengthDisplay.textContent = e.target.value;
+    });
+  });
+<% end %> 
