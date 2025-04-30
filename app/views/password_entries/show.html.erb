@@ -1,2 +1,112 @@
-<h1>PasswordEntries#show</h1>
-<p>Find me in app/views/password_entries/show.html.erb</p>
+<div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-xl">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"><%= @password_entry.name %></h1>
+      <p class="mt-2 text-lg leading-8 text-gray-600">密码详情</p>
+    </div>
+
+    <% decrypted_data = @password_entry.decrypt_data(current_key) %>
+    
+    <div class="mt-8 space-y-6">
+      <div class="border rounded-lg bg-white shadow-sm">
+        <dl class="divide-y divide-gray-100">
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium leading-6 text-gray-900">名称</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+              <%= @password_entry.name %>
+            </dd>
+          </div>
+          
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium leading-6 text-gray-900">网址</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+              <% if decrypted_data['url'].present? %>
+                <%= link_to decrypted_data['url'], decrypted_data['url'], target: '_blank', class: "text-indigo-600 hover:text-indigo-900" %>
+              <% else %>
+                <span class="text-gray-500">未设置</span>
+              <% end %>
+            </dd>
+          </div>
+
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium leading-6 text-gray-900">用户名</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 flex items-center justify-between">
+              <span id="username-text"><%= decrypted_data['username'] %></span>
+              <button onclick="copyToClipboard('username-text')" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                复制
+              </button>
+            </dd>
+          </div>
+
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium leading-6 text-gray-900">密码</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+              <div class="flex items-center justify-between">
+                <div class="flex-grow">
+                  <span id="password-dots" class="font-mono">••••••••</span>
+                  <span id="password-text" class="hidden font-mono"><%= decrypted_data['password'] %></span>
+                </div>
+                <div class="flex space-x-2">
+                  <button onclick="togglePassword()" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    显示
+                  </button>
+                  <button onclick="copyToClipboard('password-text')" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    复制
+                  </button>
+                </div>
+              </div>
+            </dd>
+          </div>
+
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium leading-6 text-gray-900">创建时间</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+              <%= @password_entry.created_at.strftime('%Y-%m-%d %H:%M') %>
+            </dd>
+          </div>
+
+          <div class="px-4 py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium leading-6 text-gray-900">最后更新</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+              <%= @password_entry.updated_at.strftime('%Y-%m-%d %H:%M') %>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="flex items-center justify-end space-x-4 mt-6">
+        <%= link_to "返回", password_entries_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+        <%= link_to "编辑", edit_password_entry_path(@password_entry), class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# 添加JavaScript功能 %>
+<%= javascript_tag do %>
+  function copyToClipboard(elementId) {
+    const text = document.getElementById(elementId).textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      // 可以添加复制成功的提示
+      alert('已复制到剪贴板');
+    }).catch(function(err) {
+      console.error('复制失败:', err);
+    });
+  }
+
+  function togglePassword() {
+    const dots = document.getElementById('password-dots');
+    const text = document.getElementById('password-text');
+    const isHidden = text.classList.contains('hidden');
+    
+    if (isHidden) {
+      dots.classList.add('hidden');
+      text.classList.remove('hidden');
+      this.textContent = '隐藏';
+    } else {
+      dots.classList.remove('hidden');
+      text.classList.add('hidden');
+      this.textContent = '显示';
+    }
+  }
+<% end %>
