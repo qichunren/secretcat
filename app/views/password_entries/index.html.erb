@@ -1,5 +1,5 @@
 <%# 密码库页面 %>
-<div class="glassmorphism rounded-2xl p-6 shadow-xl">
+<div class="glassmorphism rounded-2xl p-6 shadow-xl min-h-[calc(100vh-8rem)]">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
       <h1 class="text-2xl font-semibold leading-6">密码库</h1>
@@ -17,10 +17,10 @@
     </div>
   </div>
 
-  <div class="mt-8 flow-root">
+  <div class="mt-8 flow-root flex-1">
     <div class="overflow-x-auto">
       <div class="inline-block min-w-full align-middle">
-        <div class="overflow-hidden glassmorphism rounded-xl border border-gray-200/20">
+        <div class="overflow-hidden glassmorphism rounded-xl border border-gray-200/20 min-h-[400px]">
           <table class="min-w-full divide-y divide-gray-200/20">
             <thead>
               <tr class="bg-white/5">
@@ -59,7 +59,7 @@
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
                     <div class="flex items-center space-x-2">
                       <span class="font-mono"><%= decrypted_data['username'] %></span>
-                      <button onclick="copyToClipboard('<%= decrypted_data['username'] %>')" class="text-gray-400 hover:text-indigo-400 transition-colors duration-150">
+                      <button data-controller="clipboard" data-clipboard-text-value="<%= decrypted_data['username'] %>" data-action="clipboard#copy" class="text-gray-400 hover:text-indigo-400 transition-colors duration-150">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
                         </svg>
@@ -81,10 +81,46 @@
                         </svg>
                       <% end %>
 
-                      <%= button_to password_entry_path(entry), method: :delete, class: "text-red-400 hover:text-red-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5", data: { confirm: "确定要删除这个密码吗？" } do %>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                        </svg>
+                      <%= form_with(url: password_entry_path(entry), method: :delete, data: { 
+                        controller: 'confirm-delete',
+                        'confirm-delete-title-value': entry.name 
+                      }) do |f| %>
+                        <button type="button" data-action="confirm-delete#showModal" class="text-red-400 hover:text-red-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5">
+                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                          </svg>
+                        </button>
+
+                        <%# 确认删除对话框 %>
+                        <div data-confirm-delete-target="modal" class="hidden fixed inset-0 bg-gray-900/75 backdrop-blur-sm z-50" data-action="click->confirm-delete#backgroundClick">
+                          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div class="relative transform overflow-hidden glassmorphism rounded-xl px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                              <div class="sm:flex sm:items-start">
+                                <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-900/20 sm:mx-0 sm:h-10 sm:w-10">
+                                  <svg class="h-6 w-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                  </svg>
+                                </div>
+                                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                                  <h3 class="text-lg font-semibold leading-6 text-gray-200" data-confirm-delete-target="title"></h3>
+                                  <div class="mt-2">
+                                    <p class="text-sm text-gray-400">
+                                      您确定要删除这个密码吗？此操作无法撤销。
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+                                <button type="button" data-action="confirm-delete#confirm" class="inline-flex w-full justify-center rounded-lg bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">
+                                  确认删除
+                                </button>
+                                <button type="button" data-action="confirm-delete#hideModal" class="mt-3 inline-flex w-full justify-center rounded-lg bg-white/10 px-3 py-2 text-sm font-semibold text-gray-300 shadow-sm ring-1 ring-inset ring-gray-300/20 hover:bg-white/20 sm:mt-0 sm:w-auto">
+                                  取消
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       <% end %>
                     </div>
                   </td>
@@ -99,29 +135,4 @@
 </div>
 
 <%# JavaScript 功能 %>
-<%= javascript_tag do %>
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-      // 添加复制成功的视觉反馈
-      const notification = document.createElement('div');
-      notification.className = 'fixed bottom-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-lg transform transition-all duration-300 translate-y-full';
-      notification.textContent = '已复制到剪贴板';
-      document.body.appendChild(notification);
-      
-      // 显示通知
-      setTimeout(() => {
-        notification.style.transform = 'translateY(0)';
-      }, 100);
-      
-      // 3秒后移除通知
-      setTimeout(() => {
-        notification.style.transform = 'translateY(full)';
-        setTimeout(() => {
-          notification.remove();
-        }, 300);
-      }, 3000);
-    }).catch(function(err) {
-      console.error('复制失败:', err);
-    });
-  }
-<% end %> 
+<%# 已移至 clipboard_controller.js %> 
