@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :password_entries, only: [:create, :show]
   end
 
+  # Static pages
+  get 'how-it-works', to: 'home#how_it_works', as: :how_it_works
+
   # Set root page
   root 'home#index'
 
