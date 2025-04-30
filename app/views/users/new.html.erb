@@ -1,62 +1,62 @@
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <div class="text-center">
-      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">创建新账号</h2>
-      <p class="mt-2 text-sm text-gray-600">
+      <h2 class="mt-6 text-center text-4xl font-bold tracking-tight text-white sm:text-6xl">创建新账号</h2>
+      <p class="mt-6 text-lg leading-8 text-gray-300">
         开始使用 SecretCat 管理您的密码
       </p>
     </div>
   </div>
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white px-6 py-8 shadow-xl rounded-xl sm:px-10">
+    <div class="bg-white/5 backdrop-blur-sm px-6 py-8 shadow-2xl ring-1 ring-white/10 rounded-xl sm:px-10">
       <%= form_with(model: @user, class: "space-y-6") do |f| %>
         <div>
-          <%= f.label :email, "邮箱地址", class: "block text-base font-medium leading-6 text-gray-900" %>
+          <%= f.label :email, "邮箱地址", class: "block text-base font-medium leading-6 text-gray-300" %>
           <div class="mt-2">
             <%= f.email_field :email, required: true,
-                class: "block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-base",
+                class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
                 placeholder: "your@email.com" %>
           </div>
         </div>
 
         <div>
-          <%= f.label :master_password, "主密码", class: "block text-base font-medium leading-6 text-gray-900" %>
+          <%= f.label :master_password, "主密码", class: "block text-base font-medium leading-6 text-gray-300" %>
           <div class="mt-2">
             <%= f.password_field :master_password, required: true,
-                class: "block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-base",
+                class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
                 placeholder: "设置一个强密码" %>
           </div>
-          <p class="mt-2 text-sm text-gray-500">密码至少需要 12 个字符，包含大小写字母、数字和特殊符号</p>
+          <p class="mt-2 text-sm text-gray-400">密码至少需要 12 个字符，包含大小写字母、数字和特殊符号</p>
         </div>
 
         <div>
-          <%= f.label :master_password_confirmation, "确认主密码", class: "block text-base font-medium leading-6 text-gray-900" %>
+          <%= f.label :master_password_confirmation, "确认主密码", class: "block text-base font-medium leading-6 text-gray-300" %>
           <div class="mt-2">
             <%= f.password_field :master_password_confirmation, required: true,
-                class: "block w-full rounded-lg border-0 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-base",
+                class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
                 placeholder: "再次输入密码" %>
           </div>
         </div>
 
         <div>
-          <%= f.submit "创建账号", class: "flex w-full justify-center rounded-xl bg-indigo-600 px-5 py-4 text-base font-semibold leading-6 text-white shadow-lg hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200 hover:scale-[1.02]" %>
+          <%= f.submit "创建账号", class: "flex w-full justify-center rounded-xl bg-indigo-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-400 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transition-all duration-200" %>
         </div>
       <% end %>
 
       <div class="mt-6">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-300"></div>
+            <div class="w-full border-t border-gray-300/20"></div>
           </div>
           <div class="relative flex justify-center text-sm">
-            <span class="bg-white px-2 text-gray-500">或者</span>
+            <span class="bg-white/5 px-2 text-gray-300">或者</span>
           </div>
         </div>
 
-        <div class="mt-6 text-center text-base text-gray-500">
+        <div class="mt-6 text-center text-base text-gray-300">
           已有账号？
-          <%= link_to "登录", login_path, class: "font-medium text-indigo-600 hover:text-indigo-500 hover:underline" %>
+          <%= link_to "登录", login_path, class: "text-base font-semibold leading-6 text-gray-300 hover:text-white transition-colors duration-200" %>
         </div>
       </div>
     </div>
