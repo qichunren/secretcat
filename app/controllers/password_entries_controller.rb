@@ -1,5 +1,5 @@
 class PasswordEntriesController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user!
   before_action :set_password_entry, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -55,19 +55,10 @@ class PasswordEntriesController < ApplicationController
 
   private
 
-  def authenticate_user
-    @current_user = User.find_by(id: session[:user_id])
-    redirect_to login_path, alert: '请先登录' unless @current_user
-  end
-
   def set_password_entry
     @password_entry = current_user.password_entries.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to password_entries_path, alert: '未找到该密码条目'
-  end
-
-  def current_user
-    @current_user
   end
 
   def current_key

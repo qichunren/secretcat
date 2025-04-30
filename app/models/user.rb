@@ -2,6 +2,8 @@ require 'openssl'
 require 'base64'
 
 class User < ApplicationRecord
+  has_many :password_entries, dependent: :destroy
+
   validates :email, presence: true, uniqueness: true
   validates :password_hash, presence: true
   validates :salt, presence: true
