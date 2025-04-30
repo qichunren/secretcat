@@ -11,4 +11,14 @@ if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
 fi
 
+# 检查是否已经配置了凭证
+if [ ! -f config/credentials/production.key ]; then
+  echo "==============================================="
+  echo "欢迎使用 Secretcat!"
+  echo "==============================================="
+  echo "首次使用需要完成基本配置。"
+  ./bin/rails credentials:edit --environment=production
+  echo "==============================================="
+fi
+
 exec "${@}"
