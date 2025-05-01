@@ -1,10 +1,10 @@
-<%# 密码库页面 %>
+<%# Password Vault Page %>
 <div class="glassmorphism rounded-2xl p-6 shadow-xl min-h-[calc(100vh-8rem)]">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <h1 class="text-2xl font-semibold leading-6">密码库</h1>
+      <h1 class="text-2xl font-semibold leading-6"><%= t('passwords.index.title') %></h1>
       <p class="mt-2 text-sm text-gray-200">
-        安全存储的密码列表。所有数据使用高强度加密保护。
+        <%= t('passwords.index.subtitle') %>
       </p>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -12,7 +12,7 @@
         <svg class="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
         </svg>
-        添加新密码
+        <%= t('passwords.index.add_new') %>
       <% end %>
     </div>
   </div>
@@ -24,11 +24,11 @@
           <table class="min-w-full divide-y divide-gray-200/20">
             <thead>
               <tr class="bg-white/5">
-                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-200 sm:pl-6">名称</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-200">网址</th>
-                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-200">用户名</th>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-200 sm:pl-6"><%= t('passwords.entry.form.name.label') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-200"><%= t('passwords.entry.form.website.label') %></th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-200"><%= t('passwords.entry.form.username.label') %></th>
                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                  <span class="sr-only">操作</span>
+                  <span class="sr-only"><%= t('passwords.entry.actions.edit') %></span>
                 </th>
               </tr>
             </thead>
@@ -44,7 +44,7 @@
                       <div class="ml-4">
                         <div class="font-medium text-gray-200"><%= entry.name %></div>
                         <div class="text-gray-400 text-xs">
-                          更新于 <%= time_ago_in_words(entry.updated_at) %>前
+                          <%= t('updated_ago', time: time_ago_in_words(entry.updated_at)) %>
                         </div>
                       </div>
                     </div>
@@ -53,13 +53,13 @@
                     <% if decrypted_data['url'].present? %>
                       <%= link_to decrypted_data['url'], decrypted_data['url'], target: '_blank', class: "text-indigo-400 hover:text-indigo-300 transition-colors duration-150" %>
                     <% else %>
-                      <span class="text-gray-500">未设置</span>
+                      <span class="text-gray-500"><%= t('not_set') %></span>
                     <% end %>
                   </td>
                   <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
                     <div class="flex items-center space-x-2">
                       <span class="font-mono"><%= decrypted_data['username'] %></span>
-                      <button data-controller="clipboard" data-clipboard-text-value="<%= decrypted_data['username'] %>" data-action="clipboard#copy" class="text-gray-400 hover:text-indigo-400 transition-colors duration-150">
+                      <button data-controller="clipboard" data-clipboard-text-value="<%= decrypted_data['username'] %>" data-action="clipboard#copy" class="text-gray-400 hover:text-indigo-400 transition-colors duration-150" title="<%= t('passwords.entry.actions.copy_username') %>">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
                         </svg>
@@ -68,14 +68,14 @@
                   </td>
                   <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                     <div class="flex items-center justify-end space-x-2">
-                      <%= link_to password_entry_path(entry), class: "text-indigo-400 hover:text-indigo-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5" do %>
+                      <%= link_to password_entry_path(entry), class: "text-indigo-400 hover:text-indigo-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5", title: t('passwords.show.title') do %>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                         </svg>
                       <% end %>
                       
-                      <%= link_to edit_password_entry_path(entry), class: "text-indigo-400 hover:text-indigo-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5" do %>
+                      <%= link_to edit_password_entry_path(entry), class: "text-indigo-400 hover:text-indigo-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5", title: t('passwords.entry.actions.edit') do %>
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
                         </svg>
@@ -85,7 +85,7 @@
                         controller: 'confirm-delete',
                         'confirm-delete-title-value': entry.name 
                       }) do |f| %>
-                        <button type="button" data-action="confirm-delete#showModal" class="text-red-400 hover:text-red-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5">
+                        <button type="button" data-action="confirm-delete#showModal" class="text-red-400 hover:text-red-300 transition-colors duration-150 p-2 rounded-lg hover:bg-white/5" title="<%= t('passwords.entry.actions.delete') %>">
                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                           </svg>
@@ -105,5 +105,5 @@
   </div>
 </div>
 
-<%# JavaScript 功能 %>
-<%# 已移至 clipboard_controller.js %> 
+<%# JavaScript functionality %>
+<%# Moved to clipboard_controller.js %> 
