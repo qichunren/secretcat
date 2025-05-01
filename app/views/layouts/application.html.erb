@@ -56,9 +56,9 @@
     <div class="min-h-full">
       <%# 现代化的导航栏设计 %>
       <nav class="glassmorphism fixed w-full z-50 border-b border-slate-700/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between h-16">
-            <div class="flex items-center">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div class="flex flex-col sm:flex-row justify-between py-4 sm:py-0">
+            <div class="flex items-center justify-center sm:justify-start mb-4 sm:mb-0">
               <%= link_to root_path, class: "flex items-center space-x-2" do %>
                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@
               <% end %>
             </div>
             
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center justify-center sm:justify-end space-x-4">
               <% if current_user %>
                 <%= link_to how_it_works_path, class: "flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" do %>
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,7 +156,7 @@
 
         <%# 内容区域使用渐变背景 %>
         <div class="text-slate-100">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <%= yield %>
           </div>
         </div>

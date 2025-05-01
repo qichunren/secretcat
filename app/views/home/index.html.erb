@@ -24,7 +24,7 @@
       <p class="mt-6 text-lg leading-8 text-gray-300 max-w-2xl">
         SecretCat 是一个现代化的密码管理器，使用先进的加密技术保护您的密码安全。所有数据都经过端到端加密，只有您能访问。
       </p>
-      <div class="mt-10 flex items-center gap-x-6">
+      <div class="mt-10 flex flex-col sm:flex-row items-center gap-x-6 gap-y-4">
         <% if current_user %>
           <%= link_to "管理密码", password_entries_path, class: "rounded-xl bg-indigo-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-400 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transition-all duration-200" %>
         <% else %>
