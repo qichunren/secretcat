@@ -14,7 +14,7 @@
         <div>
           <%= f.label :email, "邮箱地址", class: "block text-base font-medium leading-6 text-gray-300" %>
           <div class="mt-2">
-            <%= f.email_field :email, required: true,
+            <%= f.email_field :email, required: true, autocomplete: "off",
                 class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
                 placeholder: "your@email.com" %>
           </div>
@@ -23,7 +23,7 @@
         <div>
           <%= f.label :master_password, "主密码", class: "block text-base font-medium leading-6 text-gray-300" %>
           <div class="mt-2">
-            <%= f.password_field :master_password, required: true,
+            <%= f.password_field :master_password, required: true, autocomplete: "new-password",
                 class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
                 placeholder: "设置一个强密码" %>
           </div>
@@ -33,7 +33,7 @@
         <div>
           <%= f.label :master_password_confirmation, "确认主密码", class: "block text-base font-medium leading-6 text-gray-300" %>
           <div class="mt-2">
-            <%= f.password_field :master_password_confirmation, required: true,
+            <%= f.password_field :master_password_confirmation, required: true, autocomplete: "new-password",
                 class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
                 placeholder: "再次输入密码" %>
           </div>

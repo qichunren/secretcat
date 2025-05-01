@@ -34,7 +34,7 @@
         </div>
         <label class="block text-sm font-medium text-gray-400">名称</label>
       </div>
-      <%= f.text_field :name, class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200", placeholder: "例如：GitHub" %>
+      <%= f.text_field :name, autocomplete: "off", class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200", placeholder: "例如：GitHub" %>
     </div>
 
     <%# 网址字段 %>
@@ -47,7 +47,7 @@
         </div>
         <label class="block text-sm font-medium text-gray-400">网址</label>
       </div>
-      <%= f.url_field :url, value: decrypted_data['url'], class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200", placeholder: "https://github.com" %>
+      <%= f.url_field :url, value: decrypted_data['url'], autocomplete: "off", class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200", placeholder: "https://github.com" %>
     </div>
 
     <%# 用户名字段 %>
@@ -60,7 +60,7 @@
         </div>
         <label class="block text-sm font-medium text-gray-400">用户名</label>
       </div>
-      <%= f.text_field :username, value: decrypted_data['username'], class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 font-mono placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200" %>
+      <%= f.text_field :username, value: decrypted_data['username'], autocomplete: "off",  class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 font-mono placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200" %>
     </div>
 
     <%# 密码字段 %>
@@ -74,7 +74,7 @@
         <label class="block text-sm font-medium text-gray-400">密码</label>
       </div>
       <div class="relative">
-        <%= f.password_field :password, value: decrypted_data['password'], class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 font-mono placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200", id: "password-field" %>
+        <%= f.password_field :password, value: decrypted_data['password'], autocomplete: "new-password", class: "w-full bg-white/5 border border-gray-200/20 rounded-lg px-4 py-2 text-gray-200 font-mono placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-transparent transition-colors duration-200", id: "password-field" %>
         <button type="button" onclick="togglePasswordVisibility()" class="absolute right-2 top-1/2 transform -translate-y-1/2 p-2 text-gray-400 hover:text-indigo-400 rounded-lg hover:bg-white/5 transition-all duration-150">
           <svg id="show-password-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
