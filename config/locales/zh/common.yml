@@ -1,0 +1,26 @@
+zh:
+  common:
+    site_name: "SecretCat"
+    tagline: "安全地管理您的密码"
+    nav:
+      how_it_works: "工作原理"
+      password_vault: "密码库"
+      logout: "退出"
+      login: "登录"
+      get_started: "开始使用"
+    flash:
+      please_login: "请先登录"
+      login_success: "登录成功"
+      logout_success: "已成功退出"
+      invalid_credentials: "邮箱或密码错误"
+    buttons:
+      save: "保存"
+      cancel: "取消"
+      delete: "删除"
+      edit: "编辑"
+      back: "返回"
+      confirm: "确认"
+    messages:
+      confirm_delete: "确定要删除吗？"
+      loading: "加载中..."
+      no_results: "未找到结果" 

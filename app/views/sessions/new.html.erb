@@ -1,61 +1,49 @@
+<%# Login Form Container %>
 <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="text-center">
-      <h2 class="mt-6 text-center text-4xl font-bold tracking-tight text-white sm:text-6xl">登录到您的账号</h2>
-      <p class="mt-6 text-lg leading-8 text-gray-300">
-        安全管理您的所有密码
-      </p>
-    </div>
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
+      <%= t('auth.login.title') %>
+    </h2>
+    <p class="mt-2 text-center text-sm text-gray-400">
+      <%= t('auth.login.subtitle') %>
+    </p>
   </div>
 
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-white/5 backdrop-blur-sm px-6 py-8 shadow-2xl ring-1 ring-white/10 rounded-xl sm:px-10">
-      <%= form_with(url: login_path, method: :post, class: "space-y-6") do |f| %>
-        <div>
-          <%= f.label :email, "邮箱地址", class: "block text-base font-medium leading-6 text-gray-300" %>
-          <div class="mt-2">
-            <%= f.email_field :email, required: true, autocomplete: "off",
-                class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
-                placeholder: "your@email.com" %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.label :master_password, "主密码", class: "block text-base font-medium leading-6 text-gray-300" %>
-          <div class="mt-2">
-            <%= f.password_field :master_password, required: true, autocomplete: "off",
-                class: "block w-full rounded-lg bg-white/10 border-0 px-4 py-3 text-white shadow-sm ring-1 ring-inset ring-white/20 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 text-base",
-                placeholder: "输入您的主密码" %>
-          </div>
-        </div>
-
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <%= f.check_box :remember_me, class: "h-5 w-5 rounded bg-white/10 border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
-            <%= f.label :remember_me, "记住我", class: "ml-2 block text-sm text-gray-300" %>
-          </div>
-        </div>
-
-        <div>
-          <%= f.submit "登录", class: "flex w-full justify-center rounded-xl bg-indigo-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-400 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transition-all duration-200" %>
-        </div>
-      <% end %>
-
-      <div class="mt-6">
-        <div class="relative">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-300/20"></div>
-          </div>
-          <div class="relative flex justify-center text-sm">
-            <span class="bg-white/5 px-2 text-gray-300">或者</span>
-          </div>
-        </div>
-
-        <div class="mt-6 text-center text-base text-gray-300">
-          还没有账号？
-          <%= link_to "注册新账号", signup_path, class: "text-base font-semibold leading-6 text-gray-300 hover:text-white transition-colors duration-200" %>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <%= form_with(url: login_path, class: "space-y-6") do |f| %>
+      <div>
+        <%= f.label :email, t('auth.login.email'), class: "block text-sm font-medium leading-6 text-white" %>
+        <div class="mt-2">
+          <%= f.email_field :email, class: "block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6", required: true %>
         </div>
       </div>
-    </div>
+
+      <div>
+        <%= f.label :password, t('auth.login.password'), class: "block text-sm font-medium leading-6 text-white" %>
+        <div class="mt-2">
+          <%= f.password_field :password, class: "block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6", required: true %>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
+          <%= f.label :remember_me, t('auth.login.remember_me'), class: "ml-3 block text-sm leading-6 text-white" %>
+        </div>
+
+        <div class="text-sm">
+          <%= link_to t('auth.login.forgot_password'), "#", class: "font-semibold text-indigo-400 hover:text-indigo-300" %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit t('auth.login.submit'), class: "flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" %>
+      </div>
+    <% end %>
+
+    <p class="mt-10 text-center text-sm text-gray-400">
+      <%= t('auth.login.no_account') %>
+      <%= link_to t('auth.login.sign_up'), signup_path, class: "font-semibold leading-6 text-indigo-400 hover:text-indigo-300" %>
+    </p>
   </div>
 </div>

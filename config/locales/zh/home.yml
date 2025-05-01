@@ -1,0 +1,41 @@
+zh:
+  home:
+    latest_version: "最新版本"
+    hero:
+      description: "SecretCat 是一个现代化的密码管理器，使用先进的加密技术保护您的密码安全。所有数据都经过端到端加密，只有您能访问。"
+      free_start: "免费开始使用"
+      view_source: "查看源代码"
+    features:
+      title: "为什么选择 SecretCat？"
+      subtitle: "安全特性"
+      description: "我们提供业界领先的安全特性，确保您的密码安全无虞。"
+      encryption:
+        title: "强大的加密技术"
+        description: "使用业界标准的 AES-256 加密算法，确保您的密码安全存储。主密码永远不会以明文形式存储。"
+      ease_of_use:
+        title: "简单易用"
+        description: "直观的用户界面，让密码管理变得轻松简单。快速存储和检索您的密码，支持一键复制和自动填充。"
+      sync:
+        title: "自动同步"
+        description: "您的密码库在多个设备间自动同步，随时随地安全访问您的密码。"
+    stats:
+      title: "为什么选择我们？"
+      description: "我们致力于提供最安全、最便捷的密码管理解决方案"
+      open_source: "开源透明"
+      end_to_end: "端到端加密"
+      code_review: "严格"
+      data_storage: "本地化"
+    how_it_works:
+      title: "SecretCat 如何工作"
+      subtitle: "了解我们的安全机制"
+      description: "了解 SecretCat 如何使用业界领先的安全措施保护您的密码。"
+      steps:
+        encryption:
+          title: "端到端加密"
+          description: "您的数据在离开设备之前就使用 AES-256 加密算法进行加密。"
+        master_password:
+          title: "主密码"
+          description: "一个强密码保护您的所有其他密码。永远不会被存储或传输。"
+        zero_knowledge:
+          title: "零知识"
+          description: "我们无法访问您的密码 - 只有您拥有解密数据的密钥。" 

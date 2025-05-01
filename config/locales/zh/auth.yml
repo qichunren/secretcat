@@ -1,0 +1,33 @@
+zh:
+  auth:
+    login:
+      title: "登录 SecretCat"
+      subtitle: "欢迎回来！请输入您的登录信息。"
+      email: "邮箱"
+      password: "密码"
+      remember_me: "记住我"
+      submit: "登录"
+      forgot_password: "忘记密码？"
+      no_account: "还没有账号？"
+      sign_up: "注册"
+    signup:
+      title: "创建账号"
+      subtitle: "开始安全地管理您的密码"
+      email: "邮箱"
+      password: "密码"
+      password_confirmation: "确认密码"
+      master_password: "主密码"
+      master_password_confirmation: "确认主密码"
+      master_password_hint: "这是您的加密密钥。请设置一个强度高且容易记住的密码 - 我们无法帮您恢复！"
+      submit: "创建账号"
+      have_account: "已有账号？"
+      login: "登录"
+    logout:
+      confirm: "确定要退出登录吗？"
+    password_requirements:
+      title: "密码要求"
+      length: "至少12个字符"
+      uppercase: "至少包含一个大写字母"
+      lowercase: "至少包含一个小写字母"
+      number: "至少包含一个数字"
+      special: "至少包含一个特殊字符" 

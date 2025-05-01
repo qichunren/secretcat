@@ -1,0 +1,26 @@
+en:
+  common:
+    site_name: "SecretCat"
+    tagline: "Securely Manage Your Passwords"
+    nav:
+      how_it_works: "How it works"
+      password_vault: "Password Vault"
+      logout: "Logout"
+      login: "Login"
+      get_started: "Get Started"
+    flash:
+      please_login: "Please login first"
+      login_success: "Successfully logged in"
+      logout_success: "Successfully logged out"
+      invalid_credentials: "Invalid email or password"
+    buttons:
+      save: "Save"
+      cancel: "Cancel"
+      delete: "Delete"
+      edit: "Edit"
+      back: "Back"
+      confirm: "Confirm"
+    messages:
+      confirm_delete: "Are you sure you want to delete this?"
+      loading: "Loading..."
+      no_results: "No results found" 
