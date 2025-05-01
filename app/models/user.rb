@@ -1,6 +1,3 @@
-require "openssl"
-require "base64"
-
 class User < ApplicationRecord
   has_many :password_entries, dependent: :destroy
 
