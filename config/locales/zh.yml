@@ -32,4 +32,29 @@ zh:
       open_source: "开源透明"
       end_to_end: "端到端加密"
       code_review: "严格"
-      data_storage: "本地化" 
+      data_storage: "本地化"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "不能为空"
+              taken: "已被占用"
+        password_entry:
+          attributes:
+            name:
+              blank: "不能为空"
+            user:
+              required: "必须存在"
+            encrypted_data:
+              blank: "不能为空"
+  errors:
+    messages:
+      blank: "不能为空"
+      taken: "已被占用"
+      required: "必须存在"
+      record_invalid: "校验失败: %{errors}"
+  time:
+    formats:
+      long: "%Y年%m月%d日 %H:%M" 

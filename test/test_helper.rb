@@ -11,5 +11,10 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    setup do
+      # 强制使用英文作为测试环境的默认语言
+      I18n.locale = :en
+      I18n.default_locale = :en
+    end
   end
 end

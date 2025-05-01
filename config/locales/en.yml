@@ -36,10 +36,28 @@ en:
     logout: "Logout"
     login: "Login"
     get_started: "Get Started"
+  auth:
+    signup:
+      title: "Create Your Account"
+      subtitle: "Start managing your passwords securely"
+      email:
+        label: "Email"
+        placeholder: "you@example.com"
+      master_password:
+        label: "Master Password"
+        placeholder: "Enter your master password"
+        hint: "Choose a strong master password that you'll remember"
+      master_password_confirmation:
+        label: "Confirm Master Password"
+        placeholder: "Confirm your master password"
+      submit: "Create Account"
+      divider: "or"
+      login_prompt: "Already have an account?"
+      login_link: "Sign in"
   home:
     latest_version: "Latest Version"
     hero:
-      description: "SecretCat is a modern password manager that uses advanced encryption technology to protect your passwords. All data is end-to-end encrypted, accessible only by you."
+      description: "SecretCat is a modern password manager that uses advanced encryption to keep your passwords safe. All data is end-to-end encrypted and only accessible by you."
       free_start: "Start Free"
       view_source: "View Source"
     features:
@@ -48,13 +66,13 @@ en:
       description: "We provide industry-leading security features to ensure your passwords are safe."
       encryption:
         title: "Strong Encryption"
-        description: "Using industry-standard AES-256 encryption algorithm to ensure your passwords are stored securely. Master password is never stored in plain text."
+        description: "Using industry-standard AES-256 encryption to ensure your passwords are stored securely. Master password is never stored in plain text."
       ease_of_use:
         title: "Easy to Use"
-        description: "Intuitive user interface makes password management easy. Quickly store and retrieve your passwords, with one-click copy and auto-fill support."
+        description: "Intuitive user interface makes password management simple. Quickly store and retrieve your passwords with one-click copy and auto-fill support."
       sync:
         title: "Auto Sync"
-        description: "Your password vault syncs automatically across multiple devices, access your passwords securely anytime, anywhere."
+        description: "Your password vault syncs automatically across devices, access your passwords securely from anywhere."
     stats:
       title: "Why Choose Us?"
       description: "We are committed to providing the most secure and convenient password management solution"
@@ -62,3 +80,5 @@ en:
       end_to_end: "End-to-End"
       code_review: "Strict"
       data_storage: "Local"
+      strict: "Strict"
+      local: "Local"
