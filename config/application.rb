@@ -6,7 +6,7 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Secretcat
+module SecretCat
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
@@ -23,5 +23,14 @@ module Secretcat
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Set available locales
+    config.i18n.available_locales = [ :en, :zh ]
+
+    # Set default locale
+    config.i18n.default_locale = :zh
+
+    # Load locale files from nested directories
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}")]
   end
 end

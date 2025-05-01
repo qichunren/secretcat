@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_key
 
+  before_action :set_locale
+
   private
 
   def current_user
@@ -18,5 +20,9 @@ class ApplicationController < ActionController::Base
     unless current_user
       redirect_to login_path, alert: "请先登录"
     end
+  end
+
+  def set_locale
+    I18n.locale = cookies[:locale] || I18n.default_locale
   end
 end

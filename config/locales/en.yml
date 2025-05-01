@@ -28,4 +28,37 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  site_name: "SecretCat"
+  tagline: "Securely Manage Your Passwords"
+  nav:
+    how_it_works: "How it works"
+    password_vault: "Password Vault"
+    logout: "Logout"
+    login: "Login"
+    get_started: "Get Started"
+  home:
+    latest_version: "Latest Version"
+    hero:
+      description: "SecretCat is a modern password manager that uses advanced encryption technology to protect your passwords. All data is end-to-end encrypted, accessible only by you."
+      free_start: "Start Free"
+      view_source: "View Source"
+    features:
+      title: "Why Choose SecretCat?"
+      subtitle: "Security Features"
+      description: "We provide industry-leading security features to ensure your passwords are safe."
+      encryption:
+        title: "Strong Encryption"
+        description: "Using industry-standard AES-256 encryption algorithm to ensure your passwords are stored securely. Master password is never stored in plain text."
+      ease_of_use:
+        title: "Easy to Use"
+        description: "Intuitive user interface makes password management easy. Quickly store and retrieve your passwords, with one-click copy and auto-fill support."
+      sync:
+        title: "Auto Sync"
+        description: "Your password vault syncs automatically across multiple devices, access your passwords securely anytime, anywhere."
+    stats:
+      title: "Why Choose Us?"
+      description: "We are committed to providing the most secure and convenient password management solution"
+      open_source: "Open Source"
+      end_to_end: "End-to-End"
+      code_review: "Strict"
+      data_storage: "Local"
