@@ -4,10 +4,10 @@
     <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
       <div class="text-center">
         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-          SecretCat 是如何工作的？
+          <%= t('home.how_it_works.title') %>
         </h1>
         <p class="mt-6 text-lg leading-8 text-gray-300">
-          了解我们如何保护您的密码安全，以及为什么您可以信任 SecretCat
+          <%= t('home.how_it_works.description') %>
         </p>
       </div>
     </div>
@@ -18,12 +18,12 @@
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <%# 端到端加密 %>
       <div class="mx-auto max-w-2xl lg:text-center mb-16">
-        <h2 class="text-base font-semibold leading-7 text-indigo-400">安全性</h2>
+        <h2 class="text-base font-semibold leading-7 text-indigo-400"><%= t('home.features.subtitle') %></h2>
         <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          端到端加密保护
+          <%= t('home.how_it_works.steps.encryption.title') %>
         </p>
         <p class="mt-6 text-lg leading-8 text-gray-300">
-          您的密码在存储之前就已经被加密，只有您知道解密密钥。即使是我们的系统管理员也无法查看您的密码。
+          <%= t('home.how_it_works.steps.encryption.description') %>
         </p>
       </div>
 
@@ -36,23 +36,19 @@
               <div class="absolute -top-3 left-4 inline-flex items-center justify-center rounded-lg bg-indigo-500 p-2">
                 <span class="text-xl font-bold text-white">1</span>
               </div>
-              <h3 class="pt-4 text-xl font-bold leading-7 text-white">主密码的作用</h3>
+              <h3 class="pt-4 text-xl font-bold leading-7 text-white"><%= t('home.how_it_works.master_password.role') %></h3>
               <p class="mt-4 text-base leading-7 text-gray-300">
-                当您创建账号时，您设置的主密码永远不会被直接存储。相反，我们使用它来：
+                <%= t('home.how_it_works.master_password.description') %>
               </p>
               <ul class="mt-4 space-y-3 text-gray-300">
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  生成一个独特的加密密钥
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  创建一个安全的验证哈希
-                </li>
+                <% t('home.how_it_works.master_password.points').each do |point| %>
+                  <li class="flex items-center">
+                    <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <%= point %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>
@@ -63,29 +59,19 @@
               <div class="absolute -top-3 left-4 inline-flex items-center justify-center rounded-lg bg-indigo-500 p-2">
                 <span class="text-xl font-bold text-white">2</span>
               </div>
-              <h3 class="pt-4 text-xl font-bold leading-7 text-white">密码加密过程</h3>
+              <h3 class="pt-4 text-xl font-bold leading-7 text-white"><%= t('home.how_it_works.password_encryption.title') %></h3>
               <p class="mt-4 text-base leading-7 text-gray-300">
-                当您保存新密码时：
+                <%= t('home.how_it_works.password_encryption.description') %>
               </p>
               <ul class="mt-4 space-y-3 text-gray-300">
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  使用 AES-256 加密算法（军事级别的加密标准）
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  每个密码都使用独特的加密密钥
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  加密在您的浏览器中完成，未加密的数据从不离开您的设备
-                </li>
+                <% t('home.how_it_works.password_encryption.points').each do |point| %>
+                  <li class="flex items-center">
+                    <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <%= point %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>
@@ -96,29 +82,19 @@
               <div class="absolute -top-3 left-4 inline-flex items-center justify-center rounded-lg bg-indigo-500 p-2">
                 <span class="text-xl font-bold text-white">3</span>
               </div>
-              <h3 class="pt-4 text-xl font-bold leading-7 text-white">安全存储</h3>
+              <h3 class="pt-4 text-xl font-bold leading-7 text-white"><%= t('home.how_it_works.secure_storage.title') %></h3>
               <p class="mt-4 text-base leading-7 text-gray-300">
-                加密后的数据在我们的服务器上是如何保护的：
+                <%= t('home.how_it_works.secure_storage.description') %>
               </p>
               <ul class="mt-4 space-y-3 text-gray-300">
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  使用安全的数据库系统存储
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  定期备份确保数据不会丢失
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  所有传输都使用 HTTPS 加密
-                </li>
+                <% t('home.how_it_works.secure_storage.points').each do |point| %>
+                  <li class="flex items-center">
+                    <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <%= point %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>
@@ -129,29 +105,19 @@
               <div class="absolute -top-3 left-4 inline-flex items-center justify-center rounded-lg bg-indigo-500 p-2">
                 <span class="text-xl font-bold text-white">4</span>
               </div>
-              <h3 class="pt-4 text-xl font-bold leading-7 text-white">访问您的密码</h3>
+              <h3 class="pt-4 text-xl font-bold leading-7 text-white"><%= t('home.how_it_works.password_access.title') %></h3>
               <p class="mt-4 text-base leading-7 text-gray-300">
-                当您需要使用密码时：
+                <%= t('home.how_it_works.password_access.description') %>
               </p>
               <ul class="mt-4 space-y-3 text-gray-300">
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  使用您的主密码生成解密密钥
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  在您的设备上本地解密数据
-                </li>
-                <li class="flex items-center">
-                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  一键复制或自动填充到需要的地方
-                </li>
+                <% t('home.how_it_works.password_access.points').each do |point| %>
+                  <li class="flex items-center">
+                    <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <%= point %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>
@@ -160,39 +126,23 @@
         <%# 安全建议 %>
         <div class="mt-16">
           <div class="rounded-xl bg-indigo-500/10 p-8 shadow-xl ring-1 ring-indigo-500/20">
-            <h3 class="text-xl font-bold leading-7 text-white">保持安全的建议</h3>
+            <h3 class="text-xl font-bold leading-7 text-white"><%= t('home.how_it_works.security_tips.title') %></h3>
             <ul class="mt-4 space-y-3 text-gray-300">
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-                使用强主密码，不要与其他账号共用
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-                定期更换密码，使用密码生成器创建强密码
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-                在不信任的设备上使用后记得登出
-              </li>
-              <li class="flex items-center">
-                <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-                保持设备系统和浏览器及时更新
-              </li>
+              <% t('home.how_it_works.security_tips.points').each do |point| %>
+                <li class="flex items-center">
+                  <svg class="h-5 w-5 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                  <%= point %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
 
         <%# 开始使用按钮 %>
         <div class="mt-16 py-8 flex justify-center">
-          <%= link_to "开始使用 SecretCat", signup_path, class: "rounded-xl bg-indigo-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transition-all duration-200 hover:scale-[1.02]" %>
+          <%= link_to t('home.how_it_works.get_started'), signup_path, class: "rounded-xl bg-indigo-500 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 transition-all duration-200 hover:scale-[1.02]" %>
         </div>
       </div>
     </div>

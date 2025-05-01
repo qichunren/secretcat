@@ -38,4 +38,39 @@ en:
           description: "One strong password to protect all your other passwords. Never stored or transmitted."
         zero_knowledge:
           title: "Zero Knowledge"
-          description: "We can't access your passwords - only you have the key to decrypt your data." 
+          description: "We can't access your passwords - only you have the key to decrypt your data."
+      master_password:
+        role: "How Master Password Works"
+        description: "When you create an account, your master password is never stored directly. Instead, we use it to:"
+        points:
+          - "Generate a unique encryption key"
+          - "Create a secure verification hash"
+      password_encryption:
+        title: "Password Encryption Process"
+        description: "When you save a new password:"
+        points:
+          - "Using AES-256 encryption algorithm (military-grade encryption standard)"
+          - "Each password uses a unique encryption key"
+          - "Encryption is done in your browser, unencrypted data never leaves your device"
+      secure_storage:
+        title: "Secure Storage"
+        description: "How encrypted data is protected on our servers:"
+        points:
+          - "Stored using secure database systems"
+          - "Regular backups ensure data won't be lost"
+          - "All transfers use HTTPS encryption"
+      password_access:
+        title: "Accessing Your Passwords"
+        description: "When you need to use a password:"
+        points:
+          - "Generate decryption key using your master password"
+          - "Decrypt data locally on your device"
+          - "One-click copy or auto-fill where needed"
+      security_tips:
+        title: "Security Tips"
+        points:
+          - "Use a strong master password, don't share it with other accounts"
+          - "Change passwords regularly, use password generator for strong passwords"
+          - "Remember to logout when using untrusted devices"
+          - "Keep your device system and browser up to date"
+      get_started: "Get Started with SecretCat" 

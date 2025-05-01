@@ -11,17 +11,24 @@ zh:
       no_account: "还没有账号？"
       sign_up: "注册"
     signup:
-      title: "创建账号"
-      subtitle: "开始安全地管理您的密码"
-      email: "邮箱"
+      title: "创建新账号"
+      subtitle: "开始使用 SecretCat 管理您的密码"
+      email:
+        label: "邮箱地址"
+        placeholder: "your@email.com"
       password: "密码"
       password_confirmation: "确认密码"
-      master_password: "主密码"
-      master_password_confirmation: "确认主密码"
-      master_password_hint: "这是您的加密密钥。请设置一个强度高且容易记住的密码 - 我们无法帮您恢复！"
+      master_password:
+        label: "主密码"
+        placeholder: "设置一个强密码"
+        hint: "密码至少需要 12 个字符，包含大小写字母、数字和特殊符号"
+      master_password_confirmation:
+        label: "确认主密码"
+        placeholder: "再次输入密码"
       submit: "创建账号"
-      have_account: "已有账号？"
-      login: "登录"
+      divider: "或者"
+      login_prompt: "已有账号？"
+      login_link: "登录"
     logout:
       confirm: "确定要退出登录吗？"
     password_requirements:
@@ -30,4 +37,20 @@ zh:
       uppercase: "至少包含一个大写字母"
       lowercase: "至少包含一个小写字母"
       number: "至少包含一个数字"
-      special: "至少包含一个特殊字符" 
+      special: "至少包含一个特殊字符"
+    forgot_password:
+      title: "重置密码"
+      subtitle: "我们将向您发送重置密码的说明"
+      email:
+        label: "邮箱地址"
+        placeholder: "your@email.com"
+      submit: "发送重置说明"
+      back_to_login: "返回登录"
+    flash:
+      login_success: "登录成功"
+      login_error: "邮箱或密码错误"
+      logout_success: "已成功退出"
+      signup_success: "账号创建成功"
+      signup_error: "创建账号时出错"
+      password_reset_sent: "密码重置说明已发送到您的邮箱"
+      password_reset_error: "发送密码重置说明时出错" 

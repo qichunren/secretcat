@@ -38,4 +38,39 @@ zh:
           description: "一个强密码保护您的所有其他密码。永远不会被存储或传输。"
         zero_knowledge:
           title: "零知识"
-          description: "我们无法访问您的密码 - 只有您拥有解密数据的密钥。" 
+          description: "我们无法访问您的密码 - 只有您拥有解密数据的密钥。"
+      master_password:
+        role: "主密码的作用"
+        description: "当您创建账号时，您设置的主密码永远不会被直接存储。相反，我们使用它来："
+        points:
+          - "生成一个独特的加密密钥"
+          - "创建一个安全的验证哈希"
+      password_encryption:
+        title: "密码加密过程"
+        description: "当您保存新密码时："
+        points:
+          - "使用 AES-256 加密算法（军事级别的加密标准）"
+          - "每个密码都使用独特的加密密钥"
+          - "加密在您的浏览器中完成，未加密的数据从不离开您的设备"
+      secure_storage:
+        title: "安全存储"
+        description: "加密后的数据在我们的服务器上是如何保护的："
+        points:
+          - "使用安全的数据库系统存储"
+          - "定期备份确保数据不会丢失"
+          - "所有传输都使用 HTTPS 加密"
+      password_access:
+        title: "访问您的密码"
+        description: "当您需要使用密码时："
+        points:
+          - "使用您的主密码生成解密密钥"
+          - "在您的设备上本地解密数据"
+          - "一键复制或自动填充到需要的地方"
+      security_tips:
+        title: "保持安全的建议"
+        points:
+          - "使用强主密码，不要与其他账号共用"
+          - "定期更换密码，使用密码生成器创建强密码"
+          - "在不信任的设备上使用后记得登出"
+          - "保持设备系统和浏览器及时更新"
+      get_started: "开始使用 SecretCat" 

@@ -1,27 +1,37 @@
 en:
   auth:
     login:
-      title: "Login to SecretCat"
-      subtitle: "Welcome back! Please enter your credentials."
-      email: "Email"
-      password: "Password"
+      title: "Welcome Back"
+      subtitle: "Access your secure password vault"
+      email:
+        label: "Email Address"
+        placeholder: "your@email.com"
+      password:
+        label: "Master Password"
+        placeholder: "Enter your master password"
       remember_me: "Remember me"
       submit: "Login"
-      forgot_password: "Forgot your password?"
-      no_account: "Don't have an account?"
-      sign_up: "Sign up"
+      forgot_password: "Forgot password?"
+      divider: "or"
+      signup_prompt: "Don't have an account?"
+      signup_link: "Sign up"
     signup:
-      title: "Create Your Account"
-      subtitle: "Start managing your passwords securely"
-      email: "Email"
-      password: "Password"
-      password_confirmation: "Confirm Password"
-      master_password: "Master Password"
-      master_password_confirmation: "Confirm Master Password"
-      master_password_hint: "This is your encryption key. Make it strong and memorable - we can't recover it!"
+      title: "Create New Account"
+      subtitle: "Start managing your passwords with SecretCat"
+      email:
+        label: "Email Address"
+        placeholder: "your@email.com"
+      master_password:
+        label: "Master Password"
+        placeholder: "Set a strong password"
+        hint: "Password must be at least 12 characters long, including uppercase and lowercase letters, numbers, and special characters"
+      master_password_confirmation:
+        label: "Confirm Master Password"
+        placeholder: "Enter password again"
       submit: "Create Account"
-      have_account: "Already have an account?"
-      login: "Login"
+      divider: "or"
+      login_prompt: "Already have an account?"
+      login_link: "Login"
     logout:
       confirm: "Are you sure you want to logout?"
     password_requirements:
@@ -30,4 +40,20 @@ en:
       uppercase: "At least one uppercase letter"
       lowercase: "At least one lowercase letter"
       number: "At least one number"
-      special: "At least one special character" 
+      special: "At least one special character"
+    forgot_password:
+      title: "Reset Password"
+      subtitle: "We'll send you instructions to reset your password"
+      email:
+        label: "Email Address"
+        placeholder: "your@email.com"
+      submit: "Send Reset Instructions"
+      back_to_login: "Back to login"
+    flash:
+      login_success: "Successfully logged in"
+      login_error: "Invalid email or password"
+      logout_success: "Successfully logged out"
+      signup_success: "Account created successfully"
+      signup_error: "Error creating account"
+      password_reset_sent: "Password reset instructions sent to your email"
+      password_reset_error: "Error sending password reset instructions" 
