@@ -58,7 +58,7 @@
       <nav class="glassmorphism fixed w-full z-50 border-b border-slate-700/50">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div class="flex flex-col sm:flex-row justify-between py-2 sm:py-4">
-            <div class="flex items-center justify-center sm:justify-start mb-4 sm:mb-0">
+            <div class="flex items-center justify-between sm:justify-start mb-4 sm:mb-0">
               <%= link_to root_path, class: "flex items-center space-x-2" do %>
                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -67,10 +67,27 @@
                 </div>
                 <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500"><%= t('site_name') %></span>
               <% end %>
+              
+              <%# 将语言切换移到这里，与logo同行 %>
+              <div class="relative inline-block text-left sm:hidden" data-controller="dropdown">
+                <button type="button" class="flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" data-action="click->dropdown#toggle click@window->dropdown#hide">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                  </svg>
+                  <span><%= I18n.locale.to_s.upcase %></span>
+                </button>
+                <div data-dropdown-target="menu" class="hidden absolute right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
+                  <div class="py-1">
+                    <%= link_to "English", switch_language_path(locale: :en), class: "block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white #{I18n.locale == :en ? 'bg-slate-700' : ''}" %>
+                    <%= link_to "中文", switch_language_path(locale: :zh), class: "block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white #{I18n.locale == :zh ? 'bg-slate-700' : ''}" %>
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div class="flex items-center justify-center sm:justify-end space-x-4">
-              <div class="relative inline-block text-left mr-4" data-controller="dropdown">
+              <%# 在大屏幕上显示语言切换 %>
+              <div class="relative hidden sm:inline-block text-left mr-4" data-controller="dropdown">
                 <button type="button" class="flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" data-action="click->dropdown#toggle click@window->dropdown#hide">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
