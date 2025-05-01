@@ -144,7 +144,7 @@
       </nav>
 
       <%# 主要内容区域 %>
-      <main class="pt-16">
+      <main class="pt-24 sm:pt-16">
         <%# 通知消息使用现代的设计 %>
         <% if notice || alert %>
           <div class="fixed left-1/2 top-24 -translate-x-1/2 z-50">
@@ -188,7 +188,7 @@
 
         <%# 内容区域使用渐变背景 %>
         <div class="text-slate-100">
-          <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div class="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8">
             <%= yield %>
           </div>
         </div>
