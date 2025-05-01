@@ -11,7 +11,6 @@ en:
         placeholder: "Enter your master password"
       remember_me: "Remember me"
       submit: "Login"
-      forgot_password: "Forgot password?"
       divider: "or"
       signup_prompt: "Don't have an account?"
       signup_link: "Sign up"
@@ -41,14 +40,6 @@ en:
       lowercase: "At least one lowercase letter"
       number: "At least one number"
       special: "At least one special character"
-    forgot_password:
-      title: "Reset Password"
-      subtitle: "We'll send you instructions to reset your password"
-      email:
-        label: "Email Address"
-        placeholder: "your@email.com"
-      submit: "Send Reset Instructions"
-      back_to_login: "Back to login"
     flash:
       login_success: "Successfully logged in"
       login_error: "Invalid email or password"
