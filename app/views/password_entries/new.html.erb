@@ -9,8 +9,8 @@
     </div>
   </div>
 
-  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
-    <div class="bg-slate-800/50 backdrop-blur-sm px-6 py-8 shadow-xl rounded-xl sm:px-10 border border-white/10">
+  <div class="sm:mt-8 sm:mx-auto sm:w-full sm:max-w-2xl">
+    <div class="px-4 py-8 shadow-xl rounded-xl sm:px-10">
       <%= form_with(model: @password_entry, class: "space-y-6") do |f| %>
         <div>
           <%= f.label :name, t('passwords.entry.form.name.label'), class: "block text-base font-medium leading-6 text-gray-200" %>
@@ -48,7 +48,7 @@
             </button>
           </div>
 
-          <div>
+          <div class="mt-4">
             <div class="flex items-center justify-between">
               <%= f.label :generate_password, t('passwords.generator.title'), class: "block text-base font-medium leading-6 text-gray-200" %>
               <button type="button" 

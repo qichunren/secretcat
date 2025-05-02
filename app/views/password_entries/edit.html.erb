@@ -1,5 +1,5 @@
 <%# Edit Password Page %>
-<div class="glassmorphism rounded-2xl p-8 shadow-xl max-w-3xl mx-auto">
+<div class="rounded-2xl p-4 sm:p-8 shadow-xl max-w-3xl mx-auto">
   <div class="text-center mb-8">
     <div class="mx-auto h-16 w-16 flex-shrink-0 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mb-4">
       <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -10,9 +10,9 @@
     <p class="mt-2 text-sm text-gray-400"><%= t('passwords.entry.edit.subtitle') %></p>
   </div>
 
-  <%= form_with(model: @password_entry, class: "space-y-6") do |f| %>
+  <%= form_with(model: @password_entry, class: "sm:space-y-2") do |f| %>
     <% if @password_entry.errors.any? %>
-      <div class="glassmorphism rounded-xl p-4 bg-red-500/10 border border-red-500/20">
+      <div class="rounded-xl p-4 bg-red-500/10 border border-red-500/20">
         <div class="text-sm font-medium text-red-400 mb-2">
           <%= t('errors.form_contains_errors', count: @password_entry.errors.count) %>
         </div>
@@ -27,7 +27,7 @@
     <% decrypted_data = @password_entry.decrypt_data(current_key) %>
 
     <%# Name Field %>
-    <div class="glassmorphism rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
+    <div class="rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
       <div class="flex items-center space-x-3 mb-2">
         <div class="p-2 rounded-lg bg-indigo-500/10">
           <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -40,7 +40,7 @@
     </div>
 
     <%# Website Field %>
-    <div class="glassmorphism rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
+    <div class="rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
       <div class="flex items-center space-x-3 mb-2">
         <div class="p-2 rounded-lg bg-indigo-500/10">
           <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@
     </div>
 
     <%# Username Field %>
-    <div class="glassmorphism rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
+    <div class="rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
       <div class="flex items-center space-x-3 mb-2">
         <div class="p-2 rounded-lg bg-indigo-500/10">
           <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
     </div>
 
     <%# Password Field %>
-    <div class="glassmorphism rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
+    <div class="rounded-xl p-4 hover:bg-white/5 transition-colors duration-200">
       <div class="flex items-center space-x-3 mb-2">
         <div class="p-2 rounded-lg bg-indigo-500/10">
           <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
