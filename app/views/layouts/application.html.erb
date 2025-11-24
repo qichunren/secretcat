@@ -54,7 +54,7 @@
   <body class="h-full text-slate-100 bg-slate-900 overflow-x-hidden">
     <div class="min-h-full">
       <%# 现代化的导航栏设计 %>
-      <nav data-controller="navbar mobile-menu" class="fixed w-full z-50 border-b border-slate-700/50 bg-transparent transition-all duration-300">
+      <nav data-controller="navbar mobile-menu" class="fixed w-full z-50 bg-transparent transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-16">
             <%# Logo %>
@@ -184,7 +184,7 @@
       </nav>
 
       <%# 主要内容区域 %>
-      <main class="pt-8">
+      <main>
         <%# 通知消息使用现代的设计 %>
         <% if notice || alert %>
           <div class="fixed left-1/2 top-24 -translate-x-1/2 z-50">
