@@ -48,39 +48,23 @@
   <body class="h-full text-slate-100 bg-slate-900">
     <div class="min-h-full">
       <%# 现代化的导航栏设计 %>
-      <nav data-controller="navbar" class="fixed w-full z-50 border-b border-slate-700/50 bg-transparent transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-          <div class="flex flex-col sm:flex-row justify-between py-2 sm:py-4">
-            <div class="flex items-center justify-between sm:justify-start mb-4 sm:mb-0">
-              <%= link_to root_path, class: "flex items-center space-x-2" do %>
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                  </svg>
-                </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500"><%= t('site_name') %></span>
-              <% end %>
-              
-              <%# 将语言切换移到这里，与logo同行 %>
-              <div class="relative inline-block text-left sm:hidden" data-controller="dropdown">
-                <button type="button" class="flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" data-action="click->dropdown#toggle click@window->dropdown#hide">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
-                  </svg>
-                  <span><%= I18n.locale.to_s.upcase %></span>
-                </button>
-                <div data-dropdown-target="menu" class="hidden absolute right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
-                  <div class="py-1">
-                    <%= link_to "English", switch_language_path(locale: :en), class: "block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white #{I18n.locale == :en ? 'bg-slate-700' : ''}" %>
-                    <%= link_to "中文", switch_language_path(locale: :zh), class: "block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white #{I18n.locale == :zh ? 'bg-slate-700' : ''}" %>
-                  </div>
-                </div>
+      <nav data-controller="navbar mobile-menu" class="fixed w-full z-50 border-b border-slate-700/50 bg-transparent transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <%# Logo %>
+            <%= link_to root_path, class: "flex items-center space-x-2 flex-shrink-0" do %>
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
               </div>
-            </div>
-            
-            <div class="flex items-center justify-center sm:justify-end space-x-4">
-              <%# 在大屏幕上显示语言切换 %>
-              <div class="relative hidden sm:inline-block text-left mr-4" data-controller="dropdown">
+              <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500"><%= t('site_name') %></span>
+            <% end %>
+
+            <%# Desktop Navigation %>
+            <div class="hidden md:flex items-center space-x-4">
+              <%# 语言切换 %>
+              <div class="relative" data-controller="dropdown">
                 <button type="button" class="flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" data-action="click->dropdown#toggle click@window->dropdown#hide">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
@@ -96,38 +80,95 @@
               </div>
 
               <% if current_user %>
-                <%= link_to how_it_works_path, class: "flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" do %>
+                <%= link_to how_it_works_path, class: "flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm" do %>
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                   <span><%= t('nav.how_it_works') %></span>
                 <% end %>
-                
-                <%= link_to password_entries_path, class: "flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200" do %>
+
+                <%= link_to password_entries_path, class: "flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm" do %>
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
                   </svg>
                   <span><%= t('nav.password_vault') %></span>
                 <% end %>
-                
-                <%= button_to logout_path, method: :delete, class: "flex items-center space-x-1 text-slate-300 hover:text-red-400 transition-colors duration-200" do %>
+
+                <%= button_to logout_path, method: :delete, class: "flex items-center space-x-1 text-slate-300 hover:text-red-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm" do %>
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                   </svg>
                   <span><%= t('nav.logout') %></span>
                 <% end %>
               <% else %>
-                <%= link_to how_it_works_path, class: "text-slate-300 hover:text-blue-400 transition-colors duration-200 px-4 py-2 rounded-md flex items-center space-x-1" do %>
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                  <span><%= t('nav.how_it_works') %></span>
+                <%= link_to how_it_works_path, class: "text-slate-300 hover:text-blue-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm" do %>
+                  <%= t('nav.how_it_works') %>
                 <% end %>
-                
-                <%= link_to login_path, class: "text-slate-300 hover:text-blue-400 transition-colors duration-200 px-4 py-2 rounded-md" do %>
+
+                <%= link_to login_path, class: "text-slate-300 hover:text-blue-400 transition-colors duration-200 px-3 py-2 rounded-md text-sm" do %>
                   <%= t('nav.login') %>
                 <% end %>
-                <%= link_to signup_path, class: "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5" do %>
+
+                <%= link_to signup_path, class: "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm font-medium" do %>
+                  <%= t('nav.get_started') %>
+                <% end %>
+              <% end %>
+            </div>
+
+            <%# Mobile menu button %>
+            <div class="md:hidden flex items-center space-x-2">
+              <%# 语言切换 - 移动端 %>
+              <div class="relative" data-controller="dropdown">
+                <button type="button" class="flex items-center space-x-1 text-slate-300 hover:text-blue-400 transition-colors duration-200 p-2" data-action="click->dropdown#toggle click@window->dropdown#hide">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+                  </svg>
+                </button>
+                <div data-dropdown-target="menu" class="hidden absolute right-0 z-10 mt-2 w-24 origin-top-right rounded-md bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu">
+                  <div class="py-1">
+                    <%= link_to "English", switch_language_path(locale: :en), class: "block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white #{I18n.locale == :en ? 'bg-slate-700' : ''}" %>
+                    <%= link_to "中文", switch_language_path(locale: :zh), class: "block px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white #{I18n.locale == :zh ? 'bg-slate-700' : ''}" %>
+                  </div>
+                </div>
+              </div>
+
+              <%# 汉堡菜单按钮 %>
+              <button type="button" class="text-slate-300 hover:text-blue-400 transition-colors duration-200 p-2" data-action="click->mobile-menu#toggle">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-mobile-menu-target="openIcon">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-mobile-menu-target="closeIcon">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <%# Mobile menu panel %>
+          <div class="hidden md:hidden bg-slate-900/95 backdrop-blur-md" data-mobile-menu-target="menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 border-t border-slate-700/50">
+              <% if current_user %>
+                <%= link_to how_it_works_path, class: "block text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors duration-200 px-3 py-2 rounded-md text-base" do %>
+                  <%= t('nav.how_it_works') %>
+                <% end %>
+
+                <%= link_to password_entries_path, class: "block text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors duration-200 px-3 py-2 rounded-md text-base" do %>
+                  <%= t('nav.password_vault') %>
+                <% end %>
+
+                <%= button_to logout_path, method: :delete, class: "w-full text-left text-slate-300 hover:text-red-400 hover:bg-slate-800/50 transition-colors duration-200 px-3 py-2 rounded-md text-base" do %>
+                  <%= t('nav.logout') %>
+                <% end %>
+              <% else %>
+                <%= link_to how_it_works_path, class: "block text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors duration-200 px-3 py-2 rounded-md text-base" do %>
+                  <%= t('nav.how_it_works') %>
+                <% end %>
+
+                <%= link_to login_path, class: "block text-slate-300 hover:text-blue-400 hover:bg-slate-800/50 transition-colors duration-200 px-3 py-2 rounded-md text-base" do %>
+                  <%= t('nav.login') %>
+                <% end %>
+
+                <%= link_to signup_path, class: "block bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-3 py-2 rounded-lg shadow-md text-base font-medium text-center" do %>
                   <%= t('nav.get_started') %>
                 <% end %>
               <% end %>
@@ -137,7 +178,7 @@
       </nav>
 
       <%# 主要内容区域 %>
-      <main class="pt-20 sm:pt-18">
+      <main class="pt-16">
         <%# 通知消息使用现代的设计 %>
         <% if notice || alert %>
           <div class="fixed left-1/2 top-24 -translate-x-1/2 z-50">
