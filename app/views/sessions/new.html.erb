@@ -1,45 +1,58 @@
 <%# Login Form Container %>
-<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    <h2 class="mt-4 sm:mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
-      <%= t('auth.login.title') %>
-    </h2>
-    <p class="mt-2 text-lg leading-8 text-gray-300 text-center">
-      <%= t('auth.login.subtitle') %>
-    </p>
+<div class="flex min-h-screen flex-col justify-center px-6 py-20 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold leading-9 tracking-tight text-white">
+        <%= t('auth.login.title') %>
+      </h2>
+      <p class="mt-3 text-base sm:text-lg leading-8 text-gray-300">
+        <%= t('auth.login.subtitle') %>
+      </p>
+    </div>
   </div>
 
-  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <%= form_with(url: login_path, class: "space-y-6") do |f| %>
-      <div>
-        <%= f.label :email, t('auth.login.email'), class: "block text-sm font-medium leading-6 text-white" %>
-        <div class="mt-2">
-          <%= f.email_field :email, autocomplete: "off", class: "form-control", required: true %>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white/5 backdrop-blur-sm px-6 py-8 shadow-2xl ring-1 ring-white/10 rounded-xl sm:px-10">
+      <%= form_with(url: login_path, class: "space-y-6") do |f| %>
+        <div>
+          <%= f.label :email, t('auth.login.email'), class: "block text-sm font-medium leading-6 text-gray-300" %>
+          <div class="mt-2">
+            <%= f.email_field :email, autocomplete: "off", class: "form-control", required: true %>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <%= f.label :master_password, t('auth.login.password'), class: "block text-sm font-medium leading-6 text-white" %>
-        <div class="mt-2">
-          <%= f.password_field :master_password, autocomplete: "new-password", class: "form-control", required: true %>
+        <div>
+          <%= f.label :master_password, t('auth.login.password'), class: "block text-sm font-medium leading-6 text-gray-300" %>
+          <div class="mt-2">
+            <%= f.password_field :master_password, autocomplete: "new-password", class: "form-control", required: true %>
+          </div>
         </div>
-      </div>
 
-      <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" %>
-          <%= f.label :remember_me, t('auth.login.remember_me'), class: "ml-3 block text-sm leading-6 text-white" %>
+          <%= f.check_box :remember_me, class: "h-4 w-4 rounded border-gray-600 bg-slate-800 text-blue-500 focus:ring-blue-500 focus:ring-offset-slate-900" %>
+          <%= f.label :remember_me, t('auth.login.remember_me'), class: "ml-3 block text-sm leading-6 text-gray-300" %>
+        </div>
+
+        <div>
+          <%= f.submit t('auth.login.submit'), class: "btn-primary" %>
+        </div>
+      <% end %>
+
+      <div class="mt-6">
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-gray-300/20"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="bg-white/5 px-2 text-gray-300"><%= t('auth.signup.divider') %></span>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center text-sm sm:text-base text-gray-300">
+          <%= t('auth.login.no_account') %>
+          <%= link_to t('auth.login.sign_up'), signup_path, class: "font-semibold text-blue-400 hover:text-blue-300 transition-colors duration-200" %>
         </div>
       </div>
-
-      <div>
-        <%= f.submit t('auth.login.submit'), class: "btn-primary" %>
-      </div>
-    <% end %>
-
-    <p class="mt-10 text-center text-base text-gray-300">
-      <%= t('auth.login.no_account') %>
-      <%= link_to t('auth.login.sign_up'), signup_path, class: "text-base font-semibold leading-6 text-gray-300 hover:text-white transition-colors duration-200" %>
-    </p>
+    </div>
   </div>
 </div>
